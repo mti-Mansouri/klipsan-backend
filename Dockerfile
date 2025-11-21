@@ -16,3 +16,7 @@ EXPOSE 8080
 
 # Command to run the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
+# ... (Previous lines remain the same)
+
+# UPDATED ENTRYPOINT: Adds -Djava.net.preferIPv4Stack=true
+ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-jar", "app.jar"]
