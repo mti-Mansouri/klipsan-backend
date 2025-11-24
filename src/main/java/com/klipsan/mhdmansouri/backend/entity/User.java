@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user") // Avoids Postgres conflict
+@Table(name = "klipsan_users") // Avoids Postgres conflict
 public class User implements UserDetails {
 
     @Id
