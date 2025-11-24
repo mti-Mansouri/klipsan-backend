@@ -27,9 +27,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // <--- 1. Enable CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // This MUST be enabled
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**", "/api/v1/health").permitAll() // <--- Add health here
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/health").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll() // <--- ADD THIS
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
